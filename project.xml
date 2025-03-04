@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<meta title="Tiny Text Editor" package="com.huy1234th.tinytexteditor" version="1.0.0"
+		company="Huy1234TH" />
+	<app main="Main" path="Export" file="TinyTextEditor" />
+
+	<source path="Source" />
+
+	<haxelib name="openfl" />
+
+	<assets path="Assets" rename="assets" />
+
+</project>
