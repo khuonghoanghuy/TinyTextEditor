@@ -1,5 +1,6 @@
 package;
 
+import openfl.Lib;
 import openfl.events.IOErrorEvent;
 import openfl.events.Event;
 import openfl.net.FileReference;
@@ -13,7 +14,7 @@ using StringTools;
 
 class Main extends Sprite {
 	private var textField:TextField;
-	var file:FileReference;
+	private var file:FileReference;
 
 	public function new() {
 		super();
@@ -25,8 +26,8 @@ class Main extends Sprite {
 		textField = new TextField();
 		textField.type = TextFieldType.INPUT;
 		textField.border = true;
-		textField.width = 400;
-		textField.height = 300;
+		textField.width = Lib.application.window.width;
+		textField.height = Lib.application.window.height;
 		textField.multiline = true;
 		textField.wordWrap = true;
 
@@ -40,6 +41,12 @@ class Main extends Sprite {
 		addChild(textField);
 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		stage.addEventListener(Event.ENTER_FRAME, onUpdate);
+	}
+
+	private function onUpdate(event:Event):Void {
+		textField.width = Lib.application.window.width;
+		textField.height = Lib.application.window.height;
 	}
 
 	private function onKeyDown(event:KeyboardEvent):Void {
