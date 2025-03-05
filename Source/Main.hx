@@ -88,5 +88,6 @@ class Main extends Sprite {
 		file.removeEventListener(Event.CANCEL, onSaveCancel);
 		file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 		file = null;
+		Lib.application.window.alert("Error", "Failed to save the file");
 	}
 }

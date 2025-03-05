@@ -4,3 +4,4 @@ TODO.md will also updated if needed!
 
 - [x] Add save function
 - [ ] Add load function
+- [ ] Add options
