@@ -1,5 +1,6 @@
 package;
 
+import openfl.Assets;
 import openfl.Lib;
 import openfl.events.IOErrorEvent;
 import openfl.events.Event;
@@ -18,6 +19,8 @@ class Main extends Sprite {
 
 	public function new() {
 		super();
+
+		Options.initOpt();
 		init();
 	}
 
@@ -33,8 +36,14 @@ class Main extends Sprite {
 
 		// Set a default text format
 		var format:TextFormat = new TextFormat();
-		format.size = 20;
-		format.font = "_sans";
+		format.size = Std.parseInt(Options.opt[1]);
+		var font = Assets.getFont("assets/fonts/" + Options.opt[0]);
+		if (sys.FileSystem.exists(font.fontName)) {
+			format.font = font.fontName;
+		} else {
+			trace("Font file not found: " + font.fontName);
+			format.font = "_sans";
+		}
 		textField.defaultTextFormat = format;
 
 		// Add the TextField to the stage
